@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grid-line: rgba(26, 29, 36, 0.04);
+    --grid-line-bold: rgba(26, 29, 36, 0.07);
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-paper-100 text-ink-900 font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Mono numerals always tabular for stat alignment */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    @apply bg-blueprint-200 text-ink-900;
+  }
+}
+
+@layer components {
+  /* Eyebrow label — the "instrument panel" label style */
+  .eyebrow {
+    @apply text-[10px] font-mono uppercase tracking-eyebrow text-ink-400 font-medium;
+  }
+
+  .eyebrow-ink {
+    @apply text-[10px] font-mono uppercase tracking-eyebrow text-ink-500 font-medium;
+  }
+
+  /* Hairline divider used throughout the instrument panel */
+  .hairline {
+    @apply border-t border-ink-900/10;
+  }
+
+  .hairline-b {
+    @apply border-b border-ink-900/10;
+  }
+
+  .hairline-r {
+    @apply border-r border-ink-900/10;
+  }
+
+  /* Blueprint grid background for the hero / empty areas */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .blueprint-grid-lg {
+    background-image:
+      linear-gradient(to right, var(--grid-line-bold) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-bold) 1px, transparent 1px);
+    background-size: 96px 96px;
+  }
+
+  /* Shimmer for skeleton / progress loads */
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      rgba(26, 29, 36, 0.04) 25%,
+      rgba(26, 29, 36, 0.08) 50%,
+      rgba(26, 29, 36, 0.04) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Focus ring — blueprint blue */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-[3px] focus-visible:ring-blueprint-500/35 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-100;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
